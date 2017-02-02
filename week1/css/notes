@@ -1,0 +1,21 @@
+notes
+
+COLOR CODES color sea - cold colors
+#D5D5DD / powder pink
+#B4C1BE / light green
+#647679 / med teal grey
+#3D4550 / med blue grey
+#19171C / dark bluegrey
+#4E4B4F / med purple grey
+
+Creature colors
+
+#F0F0F0 / very light colder grey
+#E6E6EC / lght colder grey
+#444444 / dark grey
+#D79763 / orange
+#FBCD8D / yellow orange
+#EFEFE4 / very light yellow
+
+background: #D79763 url(../images/colorofpluto.jpg) no-repeat center center;
+background-blend-mode:overlay;

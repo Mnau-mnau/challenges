@@ -1,0 +1,24 @@
+.gallery {
+  margin: 45px auto; }
+  .gallery .row {
+    display: flex;
+    justify-content: center; }
+    .gallery .row .image {
+      margin: 5px; }
+      .gallery .row .image img {
+        width: 370px;
+        z-index: -1; }
+      .gallery .row .image .overlay {
+        height: 65px;
+        background-color: rgba(0, 0, 0, 0.4);
+        margin-top: -65px;
+        z-index: 100;
+        position: absolute;
+        width: 370px;
+        height: 65px; }
+        .gallery .row .image .overlay h2 {
+          margin: 15px 30px;
+          color: #fff;
+          font-weight: 300; }
+
+/*# sourceMappingURL=gallery.css.map */

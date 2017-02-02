@@ -1,0 +1,86 @@
+// large pict part
+
+$blue: #173493;
+$green1: #396604;
+$green2: #417505;
+
+.serif {
+    font-family: 'Alegreya';
+    font-weight:400;
+    color: #fff;
+    text-shadow: 0px 0px 6px #000;
+    text-align: center;
+}
+@mixin background_pict($url) {
+background:url('../img/enchant-your-guests.jpg') no-repeat center center scroll;
+-webkit-background-size: cover;
+-moz-background-size: cover;
+-o-background-size: cover;
+background-size: cover;
+}
+
+$main_image: url('../img/enchant-your-guests.jpg');
+
+.eyecatcher {
+    .enchant {
+        height: 390px;
+        @include background_pict('../img/enchant-your-guests.jpg');
+        h1 {
+            @extend .serif;
+            font-size: 72px;
+            padding:40px 0 25px 0;
+            margin:0px auto;
+
+        }
+        h2 {
+            @extend .serif;
+            font-size: 42px;
+            padding:0px;
+            margin:0px auto;
+        }
+        .btn-green {
+            padding:10px 10px;
+            width:220px;
+            border-radius: 5px;
+            border: none;
+            @extend .serif;
+            font-size:24px;
+            text-shadow: none;
+            display: block;
+            margin: 100px auto 10px auto;
+            background: $green2;
+            background: -webkit-linear-gradient(rgba(65,117,5,1) 0%, rgba(48,87,2,1) 100%);
+            background: -o-linear-gradient(rgba(65,117,5,1) 0%, rgba(48,87,2,1) 100%);
+            background: linear-gradient(rgba(65,117,5,1) 0%, rgba(48,87,2,1) 100%);
+            box-shadow: 0px 2px 1px 0 rgba(149,149,149,0.4);
+        }
+    }
+    .icon-bar {
+        background-color: $blue;
+        height:130px;
+        display: flex;
+        justify-content: center;
+        .icon-holder {
+            margin:10px;
+            display: flex;
+            flex-direction: column;
+            align-items:center;
+            min-width:220px;
+            img {
+                height:60px;
+            }
+            h3 {
+                margin:5px auto;
+                color: #fff;
+                font-weight: 300;
+                height: 10px;
+            }
+            h4 {
+                margin:5px auto;
+                color: #fff;
+                font-weight: 400;
+                height: 10px;
+            }
+        }
+    }
+}

@@ -1,0 +1,61 @@
+.serif, .eyecatcher .enchant h1, .eyecatcher .enchant h2, .eyecatcher .enchant .btn-green {
+  font-family: 'Alegreya';
+  font-weight: 400;
+  color: #fff;
+  text-shadow: 0px 0px 6px #000;
+  text-align: center; }
+
+.eyecatcher .enchant {
+  height: 390px;
+  background: url("../img/enchant-your-guests.jpg") no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+  .eyecatcher .enchant h1 {
+    font-size: 72px;
+    padding: 40px 0 25px 0;
+    margin: 0px auto; }
+  .eyecatcher .enchant h2 {
+    font-size: 42px;
+    padding: 0px;
+    margin: 0px auto; }
+  .eyecatcher .enchant .btn-green {
+    padding: 10px 10px;
+    width: 220px;
+    border-radius: 5px;
+    border: none;
+    font-size: 24px;
+    text-shadow: none;
+    display: block;
+    margin: 100px auto 10px auto;
+    background: #417505;
+    background: -webkit-linear-gradient(#417505 0%, #305702 100%);
+    background: -o-linear-gradient(#417505 0%, #305702 100%);
+    background: linear-gradient(#417505 0%, #305702 100%);
+    box-shadow: 0px 2px 1px 0 rgba(149, 149, 149, 0.4); }
+.eyecatcher .icon-bar {
+  background-color: #173493;
+  height: 130px;
+  display: flex;
+  justify-content: center; }
+  .eyecatcher .icon-bar .icon-holder {
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 220px; }
+    .eyecatcher .icon-bar .icon-holder img {
+      height: 60px; }
+    .eyecatcher .icon-bar .icon-holder h3 {
+      margin: 5px auto;
+      color: #fff;
+      font-weight: 300;
+      height: 10px; }
+    .eyecatcher .icon-bar .icon-holder h4 {
+      margin: 5px auto;
+      color: #fff;
+      font-weight: 400;
+      height: 10px; }
+
+/*# sourceMappingURL=eyecatcher.css.map */

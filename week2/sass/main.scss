@@ -1,0 +1,24 @@
+//general rules
+*,
+*:before,
+*:after{
+    box-sizing: border-box;
+}
+
+body {
+    max-width: 1280px;
+    margin: 0 auto;
+    font-family: 'Open Sans', sans-serif;
+}
+
+//imports
+
+@import "header.scss";
+@import "eyecatcher.scss";
+@import "gallery.scss";
+@import "supporting.scss";
+
+$blue: #173493;
+$green1: #396604;
+$green2: #417505;
+

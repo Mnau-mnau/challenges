@@ -1,5 +1,5 @@
 <?php
-require('lib/data-function.php');
+require('lib/data-functions.php');
 
 $data = get_data($_GET[$id]);
 
@@ -23,8 +23,8 @@ $data = get_data($_GET[$id]);
             <nav class="navbar"> 
                 <ul>
                     <li><a href="index.php"> Home</a></li>
-                    <li><a href="index.php?page=list"> List </a></li>
-                    <li><a href="index.php?page=detail"> Detail</a></li>
+                    <li><a href="list.php"> List </a></li>
+                    <li><a href="detail.php"> Detail</a></li>
                     
                 </ul>
              </nav>        

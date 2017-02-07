@@ -1,8 +1,9 @@
 <?php
 
-require_once 'lib/data-function.php';
+require_once 'lib/data-functions.php';
 
 $people = get_index();
+
 
 ?>
 
@@ -24,8 +25,8 @@ $people = get_index();
             <nav class="navbar"> 
                 <ul>
                     <li><a href="index.php"> Home</a></li>
-                    <li><a href="index.php?page=list"> List </a></li>
-                    <li><a href="index.php?page=detail"> Detail</a></li>
+                    <li><a href="list.php"> List </a></li>
+                    <li><a href="detail.php"> Detail</a></li>
                     
                 </ul>
              </nav>        
@@ -33,7 +34,10 @@ $people = get_index();
 
         <ul>
             <?php foreach($people as $id => $teacher): ?>
-            <a href="detail.php?id=<?php // finish this
-
-
+            <li><a href="detail.php?id=<?php echo $id['name']; ?>
+            ">
+            <?php echo htmlspecialchars($id['name']).htmlspecialchars($id['firstname']);?></a></li>
+            <li></li>
+            <?php endforeach;?>
         </ul>
+    </body>

@@ -1,5 +1,6 @@
 <?php 
-require_once 'lib/data-function.php'; // check if it is correct! and add it to your file
+require_once('lib/data-functions.php'); // check if it is correct! and add it to your file
+ob_start();
 var_dump($_GET);
 var_dump($_POST);
 //default setting
@@ -7,16 +8,25 @@ var_dump($_POST);
 $name = isset($_POST['name']) ? $_POST['name']: null;
 
 */
-$data_to_save = array (
-    'firstname' =>$_POST['name'],
-    'name' => isset($_POST['name']) ? $_POST['name']: null,
-    'email' =>$_POST['email'],
-    'gender' =>$_POST['gender'],
-    'language' =>$_POST['language'],
-    'message' =>$_POST['message'],
-    'experience' => $_POST['experience']
+$default_data = array(
+    'firstname' => null,
+    'name' => null,
+    'email' =>null,
+    'gender' => null,
+    'language' =>'English',
+    'message' =>null,
+    'experience' => null,
 );
 
+$data_to_save = array(
+    'firstname' =>$_POST['firstname'],
+    'name' => $_POST['name'],
+    'email' => $_POST['email'],
+    'gender' => $_POST['gender'],
+    'language' => $_POST['language'],
+    'message' => $_POST['message'],
+    'experience' => $_POST['experience']
+);
 
 if(!isset($data_to_save['name'])){
     $valid = false;
@@ -31,14 +41,13 @@ elseif(strlen($data_to_save['name'])>255) {
         $errors[] = 'Name is too long';
 }
 else {
-    $valid - true;
+    $valid = true;
 }
 
 if($valid){
-    insert_data($data_to_save);
+    array_merge($default_data, $data_to_save);
     header('Location: list.php');
     }
-
 
 
 //function field value
@@ -76,8 +85,8 @@ function checked_if_value($name, $value) {
             <nav class="navbar"> 
                 <ul>
                     <li><a href="index.php"> Home</a></li>
-                    <li><a href="index.php?page=list"> List </a></li>
-                    <li><a href="index.php?page=detail"> Detail</a></li>
+                    <li><a href="list.php"> List </a></li>
+                    <li><a href="detail.php"> Detail</a></li>
                     
                 </ul>
              </nav>        
@@ -88,21 +97,20 @@ function checked_if_value($name, $value) {
             <h5 class="subheading2"> Please fill up this form to apply</h5>
 
             <form class="nm-form" action="" method="post">
-             First name: <input class="nm-input" type="text" name="firstname"><?php echo field_value('firstname', '');?><br>
-            Last name: <input class="nm-input" type="text" name="name"><?php echo field_value('name', '');?><br>
-            Email: <input class="nm-input" type="text" name="email"><?php echo field_value('email', '');?><br>
-            Gender: <select class="nm-choice" name="gender"><?php echo selected_if_value('gender', '');?><br>
+             First name: <input class="nm-input" type="text" name="firstname"><?php // echo field_value('firstname', '');?><br>
+            Last name: <input class="nm-input" type="text" name="name"><?php // echo field_value('name', '');?><br>
+            Email: <input class="nm-input" type="text" name="email"><?php //echo field_value('email', '');?><br>
+            Gender: <select class="nm-choice" name="gender"><?php// echo selected_if_value('gender', '');?><br>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     </select><br>
 
-            Main language: <select class="nm-choice extra" name="language"><?php echo selected_if_value('language', '');?><br>
-                    <option value="">---</option>
+            Main language: <select class="nm-choice extra" name="language"><?php// echo selected_if_value('language', '');?><br>
                     <option value="cz">Czech</option>
                     <option value="en">English</option>
                     </select><br>
             Write something about yourself:<br>
-                <textarea class="nm-input-textarea extra"name="message" rows="10" cols="50"><?php echo field_value('message', '');?>
+                <textarea class="nm-input-textarea extra"name="message" rows="10" cols="50">
                 </textarea><br>
             Do you have previous teaching experience?<br>
                 <input type="hidden" name="experience" value=0> <!-- this sets value if not selected! -->

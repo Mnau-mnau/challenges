@@ -1,14 +1,62 @@
-array(1) {
-  ["page"]=>
-  string(4) "form"
+<?php 
+require_once 'lib/data-function.php'; // check if it is correct! and add it to your file
+var_dump($_GET);
+var_dump($_POST);
+//default setting
+/*
+$name = isset($_POST['name']) ? $_POST['name']: null;
+
+*/
+$data_to_save = array (
+    'firstname' =>$_POST['name'],
+    'name' => isset($_POST['name']) ? $_POST['name']: null,
+    'email' =>$_POST['email'],
+    'gender' =>$_POST['gender'],
+    'language' =>$_POST['language'],
+    'message' =>$_POST['message'],
+    'experience' => $_POST['experience']
+);
+
+
+if(!isset($data_to_save['name'])){
+    $valid = false;
+    $errors[] = 'Name cannot be found.';
 }
+elseif(strlen($data_to_save['name']) == 0){
+        $valid = false;
+        $errors[] = 'Name cannot be empty.';
+}
+elseif(strlen($data_to_save['name'])>255) {
+        $valid = false;
+        $errors[] = 'Name is too long';
+}
+else {
+    $valid - true;
+}
+
+if($valid){
+    insert_data($data_to_save);
+    header('Location: list.php');
+    }
+
+
+
+//function field value
+//<?php echo isset($_POST['name']) ? htmlspecialchars($data_to_save['name']):'';
+function field_value($post_name, $default_value = null) {
+    $value = isset($_POST[$post_name]) ? $_POST[$post_name]: $default_value;
+    return htmlspecialchars($data_to_save['name']);
+}
+
+function checked_if_value($name, $value) {
+    if(isset($_POST[$name]) && $_POST[$name] == $value) {
+
+    }
+}
+
+
+?>
 <hr>
-array(0) {
-}
-
-
-<br />
-<b>Notice</b>:  Undefined variable: import_data in <b>/Users/Mnau/www/challenge3/index.php</b> on line <b>25</b><br />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -28,39 +76,44 @@ array(0) {
             <nav class="navbar"> 
                 <ul>
                     <li><a href="index.php"> Home</a></li>
-                    <li><a href="index.php?page=form"> Form</a></li>
                     <li><a href="index.php?page=list"> List </a></li>
-                    <li><a href="index.php?page=persona"> Persona </a></li>
+                    <li><a href="index.php?page=detail"> Detail</a></li>
                     
                 </ul>
              </nav>        
         </header>
         <section class = "nm-main">
-                                        <h1 class="heading"> DIY online classes lector database </h1>
+            <h1 class="heading"> DIY online classes lector database </h1>
+            <h4 class="subheading"> Do you want to be our online lecturer?</h4>
+            <h5 class="subheading2"> Please fill up this form to apply</h5>
 
-        <h4 class="subheading"> Do you want to be our online lecturer?</h4>
-        <h5 class="subheading2"> Please fill up this form to apply</h5>
-
-        <form class="nm-form" action="" method="post">
-            First name: <input class="nm-input" type="text" name="firstname"><br>
-            Last name: <input class="nm-input" type="text" name="lastname"><br>
-            Email: <input class="nm-input" type="text" name="email"><br>
-            Gender: <select class="nm-choice" name="gender"><br>
+            <form class="nm-form" action="" method="post">
+             First name: <input class="nm-input" type="text" name="firstname"><?php echo field_value('firstname', '');?><br>
+            Last name: <input class="nm-input" type="text" name="name"><?php echo field_value('name', '');?><br>
+            Email: <input class="nm-input" type="text" name="email"><?php echo field_value('email', '');?><br>
+            Gender: <select class="nm-choice" name="gender"><?php echo selected_if_value('gender', '');?><br>
                     <option value="male">Male</option>
                     <option value="female">Female</option>
                     </select><br>
 
-            Main language: <select class="nm-choice extra" name="language"><br>
+            Main language: <select class="nm-choice extra" name="language"><?php echo selected_if_value('language', '');?><br>
+                    <option value="">---</option>
                     <option value="cz">Czech</option>
                     <option value="en">English</option>
                     </select><br>
             Write something about yourself:<br>
-            <textarea class="nm-input-textarea extra"name="message" rows="10" cols="50">
-                    </textarea><br>
+                <textarea class="nm-input-textarea extra"name="message" rows="10" cols="50"><?php echo field_value('message', '');?>
+                </textarea><br>
             Do you have previous teaching experience?<br>
-            <input type="checkbox" class="nm-choice" name="experience" value="true"> I have taught before<br>
-                    <input class="nm-submit" type="submit" value=" Send and apply">
-        </form>
-                              </section>
+                <input type="hidden" name="experience" value=0> <!-- this sets value if not selected! -->
+                <input type="checkbox" class="nm-choice" name="experience" value="1"> I have taught before 
+                <?php echo checked_if_value('experience','');
+                // full option: echo isset($_POST['experience'])&& $_POST['experience']==1 ? 'checked': '';
+                ?>
+                <br>
+                <input class="nm-submit" type="submit" value=" Send and apply">
+            </form>
+        </section>
+
     </body>
 </html>
